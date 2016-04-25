@@ -1,32 +1,21 @@
-var request = new XMLHttpRequest();
-request.open("GET", "/stock.json", false);
-request.send(null);
-request.onreadystatechange = function() {
-  if ( request.readyState === 4 && request.status === 200 ) {
-    var data = JSON.parse(request.responseText);
 
-  }
-  data.forEach(function(d) {
-    d["Date"] = d["Date"].substring(0, d["Date"].length - 2);
-    d["Time of Day"] =
-      "2000-01-01 " + d["Date"].substring(d["Date"].length - 5);
-  }, this);
-}
-// data.forEach(function(d) {
-//   d["Date"] = d["Date"].substring(0, d["Date"].length - 2);
-//   d["Time of Day"] =
-//     "2000-01-01 " + d["Date"].substring(d["Date"].length - 5);
-// }, this);
+
 
 var svg = dimple.newSvg("body", 1200, 900);
 
 d3.json("/stock.json", function(data) {
 
 
+  data.data.forEach(function(d) {
+    d["Date"] = d["Date"].substring(0, d["Date"].length - 2);
+    d["Time of Day"] =
+      "2000-01-01 " + d["Date"].substring(d["Date"].length - 5);
+  }, this);
+
 
 var chart = new dimple.chart(svg, data.data);
 
-var x = chart.addCategoryAxis("x", "Date", "%d %b %Y", "%d %b");
+var x = chart.addCategoryAxis("x","Date", "%d %b %Y", "%d %b");
 
 
 //x.timeField = "Date"; // to make a date form
