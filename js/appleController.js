@@ -3,7 +3,7 @@ chart.controller('appleController', function($scope) {
 
 
     var margin = {top: 0, left: 150, bottom: 20, right: 0},
-        width = 1200 - margin.left - margin.left,
+        width = 1200 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
     var panExtent = {x: [new Date(2000, 0, 1),new Date(2020, 0, 1)]};
