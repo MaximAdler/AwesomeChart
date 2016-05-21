@@ -13,8 +13,8 @@
               controller  : 'appleController'
           })
 
-          .when('/GOOGLE', {
-              templateUrl : 'pages/GOOGLE.html',
+          .when('/GOOGL', {
+              templateUrl : 'pages/GOOGL.html',
               controller  : 'googleController'
           });
   });
