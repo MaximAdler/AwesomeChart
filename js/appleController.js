@@ -1,4 +1,6 @@
-chart.controller('appleController', function($scope) {
+var chart = angular.module('chart')
+
+chart.controller('appleController', ['$scope', function($scope) {
     $scope.message = 'Stock Data Of Apple inc.';
 
 
@@ -46,17 +48,17 @@ chart.controller('appleController', function($scope) {
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.value); });
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#main").append("svg")
         .attr("width", width + margin.left + margin.left)
         .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 50])
         .on("zoom", draw);
 
-    d3.csv("AAPLstock.csv", function(error, data) {
+    d3.csv("./AAPLstock.csv", function(error, data) {
         if (error) throw error;
 
 
@@ -251,4 +253,4 @@ chart.controller('appleController', function($scope) {
     // 	return tx;
     //
     // }
-});
+}]);

@@ -1,20 +1,22 @@
-  var chart = angular.module('chart', ['ngRoute']);
+var chart = angular.module('chart', ['ngRoute']);
+chart.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+    $routeProvider
+    .when('/', {
+        templateUrl: 'pages/home.html',
+        controller: 'mainController'
+    })
 
-  chart.config(function($routeProvider) {
-      $routeProvider
+    .when('/apple', {
+        templateUrl: 'pages/AAPL.html',
+        controller: 'appleController'
+    })
 
-          .when('/', {
-              templateUrl : 'pages/home.html',
-              controller  : 'mainController'
-          })
-
-          .when('/AAPL', {
-              templateUrl : 'pages/AAPL.html',
-              controller  : 'appleController'
-          })
-
-          .when('/GOOGL', {
-              templateUrl : 'pages/GOOGL.html',
-              controller  : 'googleController'
-          });
-  });
+    .when('/google', {
+        templateUrl: 'pages/GOOGL.html',
+        controller: 'googleController'
+    });
+}]);
