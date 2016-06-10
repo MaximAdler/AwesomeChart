@@ -1,4 +1,4 @@
-var chart = angular.module('chart')
-chart.controller('mainController', ['$scope', function($scope) {
+chart.controller('mainController', function($scope) {
+
     $scope.message = 'Everyone come and see how good It look!';
-}]);
+});
