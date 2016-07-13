@@ -8,7 +8,7 @@ chart.controller('appleController', ['$scope', function($scope) {
         width = 1200 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    var panExtent = {x: [new Date(2000, 0, 1),new Date(2020, 0, 1)]};
+    var panExtent = {x: [new Date(2000, 0, 1),width], y: [-Infinity,Infinity]};
 
     var parseDate = d3.time.format("%Y-%m-%d").parse,
         formatDate = d3.time.format("%Y");
@@ -58,7 +58,7 @@ chart.controller('appleController', ['$scope', function($scope) {
         .scaleExtent([1, 50])
         .on("zoom", draw);
 
-    d3.csv("AAPLstock.csv", function(error, data) {
+    d3.csv("./AAPLstock.csv", function(error, data) {
         if (error) throw error;
 
 
@@ -238,19 +238,26 @@ chart.controller('appleController', ['$scope', function($scope) {
 
 
 
-    // function panLimit() {
-    //
-    // 	var divisor = {h: height / ((y.domain()[1]-y.domain()[0])*zoom.scale()), w: width / ((x.domain()[1]-x.domain()[0])*zoom.scale())},
-    // 		minX = -(((x.domain()[0]-x.domain()[1])*zoom.scale())+(panExtent.x[1]-(panExtent.x[1]-(width/divisor.w)))),
-    // 		maxX = -(((x.domain()[0]-x.domain()[1]))+(panExtent.x[1]-panExtent.x[0]))*divisor.w*zoom.scale(),
-    //
-    // 		tx = x.domain()[0] < panExtent.x[0] ?
-    // 				minX :
-    // 				x.domain()[1] > panExtent.x[1] ?
-    // 					maxX :
-    // 					zoom.translate()[0]
-    //
-    // 	return tx;
-    //
-    // }
+    function panLimit() {
+
+    	var divisor = {h: height / ((y.domain()[1]-y.domain()[0])*zoom.scale()), w: width / ((x.domain()[1]-x.domain()[0])*zoom.scale())},
+    		minX = -(((x.domain()[0]-x.domain()[1])*zoom.scale())+(panExtent.x[1]-(panExtent.x[1]-(width/divisor.w)))),
+    		minY = -(((y.domain()[0]-y.domain()[1])*zoom.scale())+(panExtent.y[1]-(panExtent.y[1]-(height*(zoom.scale())/divisor.h))))*divisor.h,
+    		maxX = -(((x.domain()[0]-x.domain()[1]))+(panExtent.x[1]-panExtent.x[0]))*divisor.w*zoom.scale(),
+    		maxY = (((y.domain()[0]-y.domain()[1])*zoom.scale())+(panExtent.y[1]-panExtent.y[0]))*divisor.h*zoom.scale(),
+
+    		tx = x.domain()[0] < panExtent.x[0] ?
+    				minX :
+    				x.domain()[1] > panExtent.x[1] ?
+    					maxX :
+    					zoom.translate()[0],
+    		ty = y.domain()[0]  < panExtent.y[0]?
+    				minY :
+    				y.domain()[1] > panExtent.y[1] ?
+    					maxY :
+    					zoom.translate()[1];
+
+    	return [tx,ty];
+
+    }
 }]);

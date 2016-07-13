@@ -58,7 +58,7 @@ chart.controller('googleController', ['$scope', function($scope) {
         .scaleExtent([1, 50])
         .on("zoom", draw);
 
-    d3.csv("GOOGLstock.csv", function(error, data) {
+    d3.csv("./GOOGLstock.csv", function(error, data) {
         if (error) throw error;
 
 

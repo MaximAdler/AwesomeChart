@@ -2,14 +2,24 @@ body {
   background: rgba(255, 255, 255, 0.9);
 }
 .container {
-margin: 7px;
+  margin: 7px;
 }
-
+.srch {
+  padding: 50px;
+  margin-left: 50px;
+  margin-top: -20px;
+}
+.cursor{
+  cursor: pointer;
+}
+.cursor:hover{
+  text-decoration: none;
+}
 .navbar-brand {
   font-size: 45px;
 }
-.navbar-right{
-font-size: 20px;
+.navbar-right {
+  font-size: 20px;
 }
 svg {
   font: 10px sans-serif;
@@ -48,18 +58,13 @@ rect.pane {
   fill: none;
   pointer-events: all;
 }
-g{
+g {
   font-size: 11px;
 }
-
-
-
-
-
 .box {
   width: 400px;
   height: 450px;
-  box-shadow: 1px 1px 20px rgba(0,0,0,0.58);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.58);
   float: left;
   margin-left: 160px;
   margin-top: 20px;
@@ -77,7 +82,6 @@ g{
 }
 .box a {
   padding: 5px 7px;
-
   font-family: sans-serif;
   font-size: 14px;
   margin: -290px 0px 0px 60px;
@@ -95,17 +99,16 @@ g{
   float: right;
 }
 .box:hover {
-  box-shadow:7px 7px 37px -2px rgba(0,0,0,0.58);
-
+  box-shadow: 7px 7px 37px -2px rgba(0, 0, 0, 0.58);
   transition: all 0.6s ease-in-out;
 }
 .box:hover a {
   opacity: 1;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   color: #000000;
   font-size: 60px;
 }
 .box a:hover {
-text-decoration: none;
+  text-decoration: none;
   transition: all 0.5s ease-in-out;
 }

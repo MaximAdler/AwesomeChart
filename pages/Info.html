@@ -1,0 +1,54 @@
+<div class="jumbotron text-center">
+     <h1>Stack Information</h1>
+
+     <p>{{ message }}</p>
+ </div>
+ <div class="container srch">
+
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="text" class="form-control" placeholder="Search Company" ng-model="searchStock">
+        </div>
+      </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+
+      <thead>
+        <tr>
+          <td>
+            <a class='cursor' ng-click="sortType = 'name'; sortReverse = !sortReverse">
+              Name
+              <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </td>
+          <td>
+            <a class='cursor' ng-click="sortType = 'yearOfCreation'; sortReverse = !sortReverse">
+            Year of creation
+              <span ng-show="sortType == 'yearOfCreation' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'yearOfCreation' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </td>
+          <td>
+            <a class='cursor' ng-click="sortType = 'maxiPrice'; sortReverse = !sortReverse">
+            Max Price
+              <span ng-show="sortType == 'maxiPrice' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'maxiPrice' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="company in companies | orderBy:sortType:sortReverse | filter:searchStock">
+          <td>{{ company.name }}</td>
+          <td>{{ company.yearOfCreation }}</td>
+          <td>{{ company.maxPrice }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>

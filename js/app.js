@@ -18,5 +18,10 @@ chart.config(['$routeProvider', function($routeProvider) {
     .when('/GOOGL', {
         templateUrl: 'pages/GOOGL.html',
         controller: 'googleController'
+    })
+
+    .when('/Info',{
+      templateUrl: 'pages/Info.html',
+      controller: 'infoController'
     });
 }]);

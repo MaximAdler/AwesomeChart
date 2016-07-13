@@ -1,0 +1,14 @@
+[
+	{ "name": "DJIA", "yearOfCreation": 1896, "maxPrice": 18372 },
+	{ "name": "NASDAQ", "yearOfCreation": 1971, "maxPrice": 5032.10 },
+	{ "name": "S&P 500", "yearOfCreation": 1957, "maxPrice": 2155.40 },
+	{ "name": "AAPL", "yearOfCreation": 1976, "maxPrice": 97.70 },
+	{ "name": "GOOG", "yearOfCreation": 1998, "maxPrice": 722.94 },
+	{ "name": "YHOO", "yearOfCreation": 1995, "maxPrice": 38.33 },
+	{ "name": "FTSE 100", "yearOfCreation": 1984, "maxPrice": 6701.34 },
+	{ "name": "DAX", "yearOfCreation": 1988, "maxPrice": 10002 },
+	{ "name": "^HSI", "yearOfCreation": 1969, "maxPrice": 21441 },
+	{ "name": "^N225", "yearOfCreation": 1950, "maxPrice": 16444 },
+	{ "name": "TMUS", "yearOfCreation": 1994, "maxPrice": 44.27 },
+	{ "name": "T", "yearOfCreation": 1983, "maxPrice": 42.60 }
+]
